@@ -10,7 +10,6 @@ public class Congelado extends Producto {
         TEMPERATURA_CONGELACION_RECOMENDADA = temperaturaCongelacionRecomendada;
     }
 
-
     public double getTEMPERATURA_CONGELACION_RECOMENDADA() {
         return TEMPERATURA_CONGELACION_RECOMENDADA;
     }

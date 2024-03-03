@@ -30,7 +30,7 @@ public class Almacen implements IAlmacen{
         refrigeradoAlmacenado = new ArrayList<>();
 
     }
-
+    @Override
     public void registrarProducto(Producto producto) {
 
         precio = asignarPrecio(producto);
@@ -52,7 +52,7 @@ public class Almacen implements IAlmacen{
             }
         }
     }
-
+    @Override
     public void almacenar(Producto producto,ArrayList zona) {
         producto.setProductoAlmacenado(true);
         for (int i = 1 ; i <= stock; i++){
@@ -60,8 +60,8 @@ public class Almacen implements IAlmacen{
         }
         System.out.println("añadido/s " + stock + " palets de "+producto.getNOMBRE_PRODUCTO()+"\n");
     }
-
-    private boolean comprobarStock(int stock, int max) {
+    @Override
+    public boolean comprobarStock(int stock, int max) {
         boolean flag = false;
         if (stock >= max)
             System.out.println("El producto no cabe en el almacén");
@@ -70,12 +70,13 @@ public class Almacen implements IAlmacen{
         }else flag = true;
         return flag;
     }
-    private int definirStock() {
+    @Override
+    public int definirStock() {
         System.out.println("Stock: ");
         return stock = sc.nextInt();
     }
-
-    private double asignarPrecio(Producto producto) {
+    @Override
+    public double asignarPrecio(Producto producto) {
 
         boolean flag = true;
 
@@ -114,8 +115,8 @@ public class Almacen implements IAlmacen{
         }
         System.out.println("Se ha sacado una cantidad de stock de: "+i);
     }
-
-    private int extraerProducto(int cantidad,ArrayList array) {
+    @Override
+    public int extraerProducto(int cantidad,ArrayList array) {
         int i = 0;
         try {
             for (i = 0; i < cantidad; i++) {

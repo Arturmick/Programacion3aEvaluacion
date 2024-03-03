@@ -10,7 +10,6 @@ public class Refrigerado extends Producto{
         CODIGO_ORG_SUPERVISION = codigoOrgSupervision;
     }
 
-
     public int getCODIGO_ORG_SUPERVISION() {
         return CODIGO_ORG_SUPERVISION;
     }

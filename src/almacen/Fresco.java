@@ -12,7 +12,6 @@ public class Fresco extends Producto{
         PAIS_ORIGEN = paisOrigen;
     }
 
-
     public LocalDate getFECHA_ENVASADO() {
         return FECHA_ENVASADO;
     }

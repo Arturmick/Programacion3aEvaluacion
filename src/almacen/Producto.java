@@ -17,7 +17,6 @@ public class Producto {
         this.NUMERO_LOTE = NUMERO_LOTE;
     }
 
-
     public void setPrecioProducto(double precioProducto) {
         this.precioProducto = precioProducto;
     }
