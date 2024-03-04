@@ -95,8 +95,7 @@ public class Almacen implements IAlmacen{
     }
 
     @Override
-    public String verStock() {
-
+    public String obtenerStock() {
         return "\nStock en almacén: \n"+
                 "\nProducto congelado: "+congeladoAlmacenado.size()+
                 "\nProducto fresco: "+frescoAlmacenado.size()+
@@ -133,8 +132,7 @@ public class Almacen implements IAlmacen{
         Collections.sort(array, Comparator.comparing(Producto::getFECHA_CADUCIDAD));
     }
     public String toString(){
-        return "El almacén tiene una capacidad de "+STOCK_MAX+
-                " palets"+
+        return "El almacén tiene una capacidad de "+STOCK_MAX+ " palets"+
                 "\nlos cuales están organizados en:"+
                 "\nCongelador: "+CONGELADO_STOCK_MAX+" palets"+
                 "\nRefrigerador: "+REFRIGERADO_STOCK_MAX+" palets"+

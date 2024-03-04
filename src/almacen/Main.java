@@ -32,7 +32,7 @@ public class Main {
     }
 
     private static void verStock() {
-        System.out.println(logisticaZaragoza.verStock());
+        System.out.println(logisticaZaragoza.obtenerStock());
     }
 
     private static void sacarDelAlmacen(Producto producto, int i) {
@@ -44,6 +44,7 @@ public class Main {
         imprimir.append("\nProductos ha añadir: \n").append(producto);
 
         System.out.println(imprimir);
+
         imprimir.setLength(resetImprimir);
 
         logisticaZaragoza.registrarProducto(producto);
@@ -52,7 +53,9 @@ public class Main {
     private static void creacionAlmacen() {
 
         imprimir.append("\nSe ha creado un nuevo almacén en Zaragoza.\n").append(logisticaZaragoza);
+
         System.out.println(imprimir);
+
         imprimir.setLength(resetImprimir);
     }
 }

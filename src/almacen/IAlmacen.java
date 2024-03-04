@@ -6,7 +6,7 @@ public interface IAlmacen {
 
     public void registrarProducto(Producto producto);
     public void almacenar(Producto producto,ArrayList zona);
-    public String verStock();
+    public String obtenerStock();
     public void sacarCantidad(Producto producto, int cantidad);
     public void organizarPorFecha(ArrayList aray);
     public int extraerProducto(int cantidad, ArrayList array);
