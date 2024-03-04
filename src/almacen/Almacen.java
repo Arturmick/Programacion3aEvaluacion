@@ -63,7 +63,7 @@ public class Almacen implements IAlmacen{
     @Override
     public boolean comprobarStock(int stock, int max) {
         boolean flag = false;
-        if (stock >= max)
+        if (stock > max)
             System.out.println("El producto no cabe en el almacén");
         else if (stock <= 0) {
             System.out.println("Se debe introducir algo en el almacén para poder registrar un producto");
@@ -95,11 +95,11 @@ public class Almacen implements IAlmacen{
     }
 
     @Override
-    public String obtenerStock() {
+    public String obtenerStock(Almacen almacen) {
         return "\nStock en almacén: \n"+
-                "\nProducto congelado: "+congeladoAlmacenado.size()+
-                "\nProducto fresco: "+frescoAlmacenado.size()+
-                "\nProducto refrigerado: "+refrigeradoAlmacenado.size();
+                "\nProducto congelado: "+almacen.congeladoAlmacenado.size()+
+                "\nProducto fresco: "+almacen.frescoAlmacenado.size()+
+                "\nProducto refrigerado: "+almacen.refrigeradoAlmacenado.size();
     }
 
     @Override
