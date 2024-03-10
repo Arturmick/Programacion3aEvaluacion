@@ -9,12 +9,21 @@ public class Producto {
     private final LocalDate FECHA_CADUCIDAD;
     private final String NOMBRE_PRODUCTO;
     private double precioProducto;
+    private int stockProducto;
     private boolean productoAlmacenado = false;
 
     public Producto (String nombreProducto, int NUMERO_LOTE,int anyoCaducidad, int mesCaducidad, int diaCaducidad) {
         this.NOMBRE_PRODUCTO = nombreProducto;
         this.FECHA_CADUCIDAD = LocalDate.of(anyoCaducidad, mesCaducidad, diaCaducidad);
         this.NUMERO_LOTE = NUMERO_LOTE;
+    }
+
+    public int getStockProducto() {
+        return stockProducto;
+    }
+
+    public void setStockProducto(int stockProducto) {
+        this.stockProducto = stockProducto;
     }
 
     public void setPrecioProducto(double precioProducto) {

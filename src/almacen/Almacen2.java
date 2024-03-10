@@ -3,18 +3,32 @@ package almacen;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
-
-public class Almacen{
-
+public class Almacen2 implements IAlmacen{
+    public static Scanner sc = new Scanner(System.in);
     private final int STOCK_MAX;
-    public Almacen(int a, int b, int c) {
-        Congelador congelador = new Congelador(b);
-        Refrigerador refrigerador = new Refrigerador(c);
-        Estantes estantes = new Estantes(a);
-        this.STOCK_MAX = a + b + c;
-    }
+    private final int FRESCO_STOCK_MAX;
+    private final int CONGELADO_STOCK_MAX;
+    private final int REFRIGERADO_STOCK_MAX;
+    public ArrayList <Fresco> frescoAlmacenado;
+    public ArrayList <Congelado> congeladoAlmacenado;
+    public ArrayList <Refrigerado> refrigeradoAlmacenado;
 
+
+    public Almacen2() {
+
+        this.FRESCO_STOCK_MAX = fresco;
+        this.REFRIGERADO_STOCK_MAX = refrigerado;
+        this.CONGELADO_STOCK_MAX = congelado;
+        this.STOCK_MAX = stockMax;
+
+        frescoAlmacenado = new ArrayList<>();
+        congeladoAlmacenado = new ArrayList<>();
+        refrigeradoAlmacenado = new ArrayList<>();
+
+    }
+    @Override
     public void registrarProducto(Producto producto) {
 
         if (producto instanceof Congelado) {
@@ -34,15 +48,15 @@ public class Almacen{
             }
         }
     }
-//    @Override
-//    public String almacenar(Producto producto,ArrayList zona) {
-//        producto.setProductoAlmacenado(true);
-//        for (int i = 1 ; i <= producto.getStockProducto(); i++){
-//            zona.add(producto);
-//        }
-//        return"añadido/s " + producto.getStockProducto() + " palets de "+producto.getNOMBRE_PRODUCTO()+"\n";
-//    }
-
+    @Override
+    public String almacenar(Producto producto,ArrayList zona) {
+        producto.setProductoAlmacenado(true);
+        for (int i = 1 ; i <= producto.getStockProducto(); i++){
+            zona.add(producto);
+        }
+        return"añadido/s " + producto.getStockProducto() + " palets de "+producto.getNOMBRE_PRODUCTO()+"\n";
+    }
+    @Override
     public boolean comprobarStock(int stock, int max) {
         boolean flag = false;
         if (stock > max)
@@ -53,15 +67,15 @@ public class Almacen{
         return flag;
     }
 
-    public String obtenerStockAlmacen() {
-
+    @Override
+    public String obtenerStock(Almacen2 almacen) {
         return "\nStock en almacén: \n"+
-                "\nProducto congelado: "+congelador.congeladoAlmacenado.size()+
-                "\nProducto fresco: "+estantes.frescoAlmacenado.size()+
-                "\nProducto refrigerado: "+refrigerador.refrigeradoAlmacenado.size();
+                "\nProducto congelado: "+almacen.congeladoAlmacenado.size()+
+                "\nProducto fresco: "+almacen.frescoAlmacenado.size()+
+                "\nProducto refrigerado: "+almacen.refrigeradoAlmacenado.size();
     }
 
-
+    @Override
     public String sacarCantidad(Producto producto, int cantidad) {
         int i = 0;
         if (producto instanceof Congelado) {
@@ -73,7 +87,7 @@ public class Almacen{
         }
         return"Se ha sacado una cantidad de stock de: "+i;
     }
-
+    @Override
     public int extraerProducto(int cantidad,ArrayList array) {
         int i = 0;
         try {
@@ -86,16 +100,15 @@ public class Almacen{
         return i;
     }
 
-    public void organizarAlmacenPorFecha(Congelador congelador, Refrigerador refrigerador, Estantes estantes) {
-        Collections.sort(congelador.congeladoAlmacenado, Comparator.comparing(Producto::getFECHA_CADUCIDAD));
-        Collections.sort(refrigerador.refrigeradoAlmacenado, Comparator.comparing(Producto::getFECHA_CADUCIDAD));
-        Collections.sort(estantes.frescoAlmacenado, Comparator.comparing(Producto::getFECHA_CADUCIDAD));
+    @Override
+    public void organizarPorFecha(ArrayList array) {
+        Collections.sort(array, Comparator.comparing(Producto::getFECHA_CADUCIDAD));
     }
-    public String toString(Congelador congelador, Refrigerador refrigerador, Estantes estantes){
+    public String toString(){
         return "El almacén tiene una capacidad de "+STOCK_MAX+ " palets"+
                 "\nlos cuales están organizados en:"+
-                "\nCongelador: "+congelador.getCONGELADO_STOCK_MAX()+" palets"+
-                "\nRefrigerador: "+refrigerador.getREFRIGERADO_STOCK_MAX()+" palets"+
-                "\nEstantes: "+estantes.getFRESCO_STOCK_MAX()+" palets";
+                "\nCongelador: "+CONGELADO_STOCK_MAX+" palets"+
+                "\nRefrigerador: "+REFRIGERADO_STOCK_MAX+" palets"+
+                "\nEstantes: "+FRESCO_STOCK_MAX+" palets";
     }
 }

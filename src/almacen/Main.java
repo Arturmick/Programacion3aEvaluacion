@@ -21,7 +21,7 @@ public class Main {
 
         anyadirProductosAlmacen(logisticaZaragoza,ternera);
 
-        System.out.println(logisticaZaragoza.obtenerStock(logisticaZaragoza));
+
 
         sacarDelAlmacen(logisticaZaragoza,fresas,10);
 
@@ -29,7 +29,8 @@ public class Main {
 
         sacarDelAlmacen(logisticaZaragoza,ternera,12);
 
-        System.out.println(logisticaZaragoza.obtenerStock(logisticaZaragoza));
+
+
     }
 
     private static void sacarDelAlmacen(Almacen almacen, Producto producto, int i) {
