@@ -25,7 +25,6 @@ public class Producto {
     public void setStockProducto(int stockProducto) {
         this.stockProducto = stockProducto;
     }
-
     public void setPrecioProducto(double precioProducto) {
         this.precioProducto = precioProducto;
     }
